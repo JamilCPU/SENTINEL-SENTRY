@@ -1,0 +1,15 @@
+# Build logs and editor/backup leftovers
+*.log
+*.bak
+*.bak[0-9]
+*~
+
+# Secrets - never commit
+.env
+*.env
+
+# Python / colcon build output
+__pycache__/
+build/
+install/
+log/
