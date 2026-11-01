@@ -1,3 +1,7 @@
+# Fixed project name keeps container names stable (sentinel-ros-lidar-1, ...)
+# no matter which folder this file is run from.
+name: sentinel-ros
+
 services:
   lidar:
     image: sentinel-ros:jazzy

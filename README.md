@@ -59,7 +59,7 @@ sudo ln -sf "$PWD/scripts/lidar-power.sh" /usr/local/bin/lidar-power
 lidar-power status
 ```
 
-> The live Pi currently runs these files from `~/sentinel-ros`. `lidar-power.sh` expects the compose file there.
+The live robot runs straight from a clone at `~/SENTINEL-SENTRY`. To deploy a change: `git pull`, then `docker compose up -d` in `robot/` (and `docker build` first if the Dockerfile changed).
 
 ## Viewing and talking to the robot
 

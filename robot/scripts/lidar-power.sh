@@ -4,7 +4,8 @@
 # USB device (including the Pico once it's plugged in). Ports power back on at reboot.
 set -euo pipefail
 
-COMPOSE_DIR="$HOME/sentinel-ros"
+# compose.yaml lives one level up from this script (resolves the /usr/local/bin symlink).
+COMPOSE_DIR="$(cd "$(dirname "$(readlink -f "$0")")/.." && pwd)"
 HUBS=(1 2 3 4)
 DEVICE=/dev/ldlidar
 
