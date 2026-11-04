@@ -4,12 +4,19 @@ A home-built apartment patrol robot running ROS 2 Jazzy on a Raspberry Pi 5.
 
 The goal: a robot that drives itself around the apartment, notices things with its camera, logs what it saw, and returns to its charger when the battery runs low.
 
+## Stack
+
+- ROS 2 Jazzy in Docker (`ros:jazzy-ros-base`) on a Raspberry Pi 5, Debian 13
+- LD19 lidar driver (`ldlidar_stl_ros2`), Foxglove bridge, rosbridge
+- Docker Compose, Bash helper scripts, a udev rule
+- Planned: Raspberry Pi Pico motor controller, encoder motors, camera
+
 ## Marks
 
 | Mark | Status | What it is |
 |------|--------|------------|
-| **MK0** | ✅ Built | Stationary test rig: Pi 5 + LD19 lidar publishing `/scan`, viewable from the PC |
-| **MK1** | 🛠 In progress | First driving robot: 2 encoder motors, Pico motor controller, battery power |
+| **MK0** | Built | Stationary test rig: Pi 5 + LD19 lidar publishing `/scan`, viewable from the PC |
+| **MK1** | In progress | First driving robot: 2 encoder motors, Pico motor controller, battery power |
 | MK2+ | Planned | Camera, charging dock, patrol + sighting log |
 
 ## What runs on the robot (MK0)
@@ -40,7 +47,9 @@ docs/
   parts-list.md        What's built and what MK1 needs
 ```
 
-## Setting up a fresh Pi
+## Running
+
+Setting up a fresh Pi:
 
 On the robot's Raspberry Pi 5 (Docker installed, user in the `docker` and `dialout` groups):
 
@@ -63,8 +72,10 @@ The live robot runs straight from a clone at `~/SENTINEL-SENTRY`. To deploy a ch
 
 ## Viewing and talking to the robot
 
-- **Lichtblick** (open-source Foxglove viewer) → *Open connection* → *Foxglove WebSocket* → `ws://192.0.2.102:8765`
-- **Claude + ros-mcp-server** → "connect to the robot at 192.0.2.102 port 9091"
+Replace `<robot-ip>` with the Pi's LAN address.
+
+- **Lichtblick** (open-source Foxglove viewer) → *Open connection* → *Foxglove WebSocket* → `ws://<robot-ip>:8765`
+- **Claude + ros-mcp-server** → "connect to the robot at <robot-ip> port 9091"
 
 ## Gotchas learned
 
@@ -72,3 +83,7 @@ The live robot runs straight from a clone at `~/SENTINEL-SENTRY`. To deploy a ch
 - ROS nodes in separate containers on the same machine need `ipc: host`. Otherwise Fast DDS discovery works but no data arrives.
 - `foxglove_bridge` 3.x only accepts the `foxglove.sdk.v1` WebSocket subprotocol.
 - On the Pi 5, USB power only drops when **all four** ports are switched off, so `lidar-power off` cuts every USB device.
+
+## Status
+
+Work in progress. Only the stationary lidar rig (MK0) is built; driving, camera, patrol and docking are planned and not implemented.
