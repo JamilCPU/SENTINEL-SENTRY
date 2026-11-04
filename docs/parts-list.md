@@ -4,7 +4,7 @@
 
 | Part | Notes |
 |------|-------|
-| Raspberry Pi 5 (8 GB) - "Pi2" | Debian 13 (trixie), 192.0.2.102 |
+| Raspberry Pi 5 (8 GB) - "Pi2" | Debian 13 (trixie), <robot-ip> |
 | FHL-LD19 lidar (LDROBOT LD19) | 12 m, 360°, CP2102 USB-serial adapter, 230400 baud |
 
 ## MK1 - first driving robot (in progress)

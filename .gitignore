@@ -13,3 +13,20 @@ __pycache__/
 build/
 install/
 log/
+
+# Extra ignores
+.env.*
+!.env.example
+*.keys
+*.db
+*.sqlite
+*.sqlite3
+venv/
+node_modules/
+bin/
+obj/
+dist/
+.vs/
+.idea/
+*.class
+target/
